@@ -5,7 +5,9 @@
 [![Python versions](https://img.shields.io/badge/Python-3.9%2B-blue)](https://www.python.org/downloads/)
 [![license: MIT](https://img.shields.io/badge/License-MIT-purple.svg)](LICENSE)
 
-# gflownet
+# Investigating Generalization Behaviours of Generative Flow Networks (GFlowNets, GFNs)
+
+# GFlowNet
 
 GFlowNet-related training and environment code on graphs.
 
@@ -21,15 +23,17 @@ The GNN model can be trained on a mix of existing data (offline) and self-genera
 
 ## Repo overview
 
+This repo is based off the implementation: [gflownet](https://github.com/recursionpharma/gflownet.git)
+
+Structure of repo:
+
 - [algo](src/gflownet/algo), contains GFlowNet algorithms implementations ([Trajectory Balance](https://arxiv.org/abs/2201.13259), [SubTB](https://arxiv.org/abs/2209.12782), [Flow Matching](https://arxiv.org/abs/2106.04399)), as well as some baselines. These implement how to sample trajectories from a model and compute the loss from trajectories.
 - [data](src/gflownet/data), contains dataset definitions, data loading and data sampling utilities.
 - [envs](src/gflownet/envs), contains environment classes; a graph-building environment base, and a molecular graph context class. The base environment is agnostic to what kind of graph is being made, and the context class specifies mappings from graphs to objects (e.g. molecules) and torch geometric Data.
 - [examples](docs/examples), contains simple example implementations of GFlowNet.
 - [models](src/gflownet/models), contains model definitions.
 - [tasks](src/gflownet/tasks), contains training code.
-    -  [qm9](src/gflownet/tasks/qm9/qm9.py), temperature-conditional molecule sampler based on QM9's HOMO-LUMO gap data as a reward.
-    -  [seh_frag](src/gflownet/tasks/seh_frag.py), reproducing Bengio et al. 2021, fragment-based molecule design targeting the sEH protein
-    -  [seh_frag_moo](src/gflownet/tasks/seh_frag_moo.py), same as the above, but with multi-objective optimization (incl. QED, SA, and molecule weight objectives).
+    -  [`basic_graph_task.py`](src/gflownet/tasks/basic_graph_task.py), graph generation environment for counting, neighbors, and cliques tasks. 
 - [utils](src/gflownet/utils), contains utilities (multiprocessing, metrics, conditioning).
 - [`trainer.py`](src/gflownet/trainer.py), defines a general harness for training GFlowNet models.
 - [`online_trainer.py`](src/gflownet/online_trainer.py), defines a typical online-GFN training loop.
