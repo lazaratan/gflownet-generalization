@@ -51,7 +51,6 @@ See [implementation notes](docs/implementation_notes.md) for more.
 
 ## Getting started
 
-A good place to get started is with the [sEH fragment-based MOO task](src/gflownet/tasks/seh_frag_moo.py). The file `seh_frag_moo.py` is runnable as-is (although you may want to change the default configuration in `main()`).
 
 ## Installation
 
