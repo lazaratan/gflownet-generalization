@@ -1,8 +1,7 @@
 import sys
 import itertools
 
-root = "/mnt/ps/home/CORP/lazar.atanackovic/project/gflownet-runs/logs/gfn_offline_full_train_dist_sample_Jan_19"
-#root = "/mnt/ps/home/CORP/lazar.atanackovic/project/gflownet-runs/logs/gfn_offline_09_train_dist_sample_Jan_12"
+root = "/logs/gfn_offline_full_train_dist_sample"
 counter = itertools.count()
 
 base_hps = {
@@ -33,7 +32,7 @@ hps = [
     {
         **base_hps,
         "log_dir": f"{root}/run_{next(counter)}/",
-        "log_tags": ["gfn_offline_train_dist_sample_v3"],
+        "log_tags": ["gfn_offline_train_dist_sample"],
         "seed": seed,
         "opt": {"learning_rate": 1e-4}, # o.g. 1e-4,
         
@@ -58,7 +57,7 @@ hps = [
         
     }
     for reward in ['count', 'even_neighbors', 'cliques']
-    for data_distribution in ["uniform", "log_rewards", "log_p", "l2_log_error_gfn", "l1_error_gfn"] # TODO implement "loss_gfn"
+    for data_distribution in ["uniform", "log_rewards", "log_p", "l2_log_error_gfn", "l1_error_gfn"] 
     for seed in [1, 2, 3]
     #for lr in [5e-4, 1e-4, 5e-5, 1e-5]
     for algo in [

@@ -1,7 +1,7 @@
 import sys
 import itertools
 
-root = "/mnt/ps/home/CORP/lazar.atanackovic/project/gflownet-runs/logs/gfn_seq_offline_09_train_dist_sample_Jan_15"
+root = "/logs/gfn_seq_offline_09_train_dist_sample"
 counter = itertools.count()
 
 base_hps = {

@@ -1,8 +1,7 @@
 import sys
 import itertools
 
-root = "/mnt/ps/home/CORP/lazar.atanackovic/project/gflownet-runs/logs/gfn_TB_rewards_shuffle"
-#root = "/mnt/ps/home/CORP/lazar.atanackovic/project/gflownet-runs/logs/gfn_TB_logits_shuffle"
+root = "/logs/gfn_TB_rewards_shuffle"
 counter = itertools.count()
 
 base_hps = {

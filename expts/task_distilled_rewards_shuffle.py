@@ -1,8 +1,8 @@
 import sys
 import itertools
 
-#root = "/mnt/ps/home/CORP/lazar.atanackovic/project/gflownet-runs/logs/distilled_rewards_shuffle_Oct_18"
-root = "/mnt/ps/home/CORP/lazar.atanackovic/project/gflownet-runs/logs/distilled_logits_shuffle_Oct_18"
+root = "/logs/distilled_rewards_shuffle" # use for reward shuffle (with env structure)
+#root = "/logs/distilled_logits_shuffle" # use for random logits (no env structure)
 counter = itertools.count()
 
 base_hps = {
@@ -32,7 +32,7 @@ hps = [
     {
         **base_hps,
         "log_dir": f"{root}/run_{next(counter)}/",
-        "log_tags": ["distilled_logits_shuffle_v2"],
+        "log_tags": ["distilled_logits_shuffle"],
         
         "task": {
         "basic_graph": {
@@ -45,7 +45,7 @@ hps = [
             "reward_func": reward, 
             "reward_reshape": False,
             "reward_corrupt": False,
-            "logits_shuffle": shuffle, #"reward_shuffle": shuffle,
+            "reward_shuffle": shuffle, # if logit shuffle use "logits_shuffle": shuffle,
             "reward_param": 0.0,
             },
         },  

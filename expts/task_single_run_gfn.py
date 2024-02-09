@@ -1,6 +1,6 @@
 import sys
 
-root = "/mnt/ps/home/CORP/lazar.atanackovic/project/gflownet-runs/logs/gfn_single_runs"
+root = "/logs/gfn_single_runs"
 
 base_hps = {
     "num_training_steps": 100000,
@@ -61,15 +61,7 @@ hps = [
             **algo,
         },
 
-        #"cond": {
-        #    "logZ":{
-        #        "sample_dist": None, #"uniform",  # set to None to not sample cond_info for logZ
-        #        "dist_params": [1.0, 20.0],
-        #        "num_thermometer_dim": 32,
-        #        "num_valid_logZ_samples": 5,
-        #    },
-        #},
-        
+
     }
     for algo in [
         {
@@ -83,12 +75,15 @@ hps = [
     ]
 ]
 
+### Use to train GFlowNet models (online or offline)
 
 from gflownet.tasks.basic_graph_task import BasicGraphTaskTrainer
 
 trial = BasicGraphTaskTrainer(hps[0])
 trial.print_every = 1
 trial.run()
+
+### Use to train distilled models (F, P_F)
 
 #from gflownet.tasks.basic_graph_task import BGSupervisedTrainer
 

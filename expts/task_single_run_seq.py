@@ -1,6 +1,6 @@
 import sys
 
-root = "/mnt/ps/home/CORP/lazar.atanackovic/project/gflownet-runs/logs/gfn_single_seq_runs_2"
+root = "/logs/gfn_single_seq_runs_2"
 
 base_hps = {
     "num_training_steps": 100000,
@@ -49,14 +49,6 @@ hps = [
             "reward_param": 0.0,
             },
         }, 
-
-        #"cond": {
-        #    "temperature": {
-        #        "sample_dist": "constant",
-        #        "dist_params": [1.0],
-        #        "num_thermometer_dim": 1, # don't change this unless update cached data
-        #    }
-        #},
         
         "algo": {
             **base_algo_hps,
@@ -77,10 +69,11 @@ hps = [
     #]
 ]
 
-
+### Use to train GFlowNet models (online or offline)
 #from gflownet.tasks.toy_seq import ToySeqTrainer
 #trial = ToySeqTrainer(hps[0])
 
+### Use to train distilled models (F, P_F)
 from gflownet.tasks.toy_seq import SeqSupervisedTrainer
 trial = SeqSupervisedTrainer(hps[0])
 

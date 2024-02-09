@@ -1,7 +1,7 @@
 import sys
 import itertools
 
-root = "/mnt/ps/home/CORP/lazar.atanackovic/project/gflownet-runs/logs/gfn_seq_CONST_flows_Jan_23"
+root = "/logs/gfn_seq_CONST_flows"
 counter = itertools.count()
 
 base_hps = {
@@ -47,14 +47,6 @@ hps = [
             "reward_func": 'const', # currently only edit reward is supported
             },
         }, 
-
-        #"cond": {
-        #    "temperature": {
-        #        "sample_dist": "constant",
-        #        "dist_params": [1.0],
-        #        "num_thermometer_dim": 1, # don't change this unless update cached data
-        #    }
-        #},
         
         "algo": {
             **base_algo_hps,

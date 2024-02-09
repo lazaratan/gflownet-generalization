@@ -1,7 +1,7 @@
 import sys
 import itertools
 
-root = "/mnt/ps/home/CORP/lazar.atanackovic/project/gflownet-runs/logs/supervised_gnn_Oct_18"
+root = "/logs/supervised_gnn"
 counter = itertools.count()
 
 base_hps = {
@@ -32,7 +32,7 @@ hps = [
     {
         **base_hps,
         "log_dir": f"{root}/run_{next(counter)}/",
-        "log_tags": ["supervised_gnn_v3"],
+        "log_tags": ["supervised_gnn"],
         
         "task": {
         "basic_graph": {

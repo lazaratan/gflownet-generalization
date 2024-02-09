@@ -1,7 +1,7 @@
 import sys
 import itertools
 
-root = "/mnt/ps/home/CORP/lazar.atanackovic/project/gflownet-runs/logs/supervised_gnn_corrupt_Oct_16"
+root = "/logs/supervised_gnn_corrupt"
 counter = itertools.count()
 
 base_hps = {

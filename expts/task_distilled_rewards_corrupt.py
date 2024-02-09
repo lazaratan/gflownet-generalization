@@ -1,7 +1,7 @@
 import sys
 import itertools
 
-root = "/mnt/ps/home/CORP/lazar.atanackovic/project/gflownet-runs/logs/distilled_rewards_corrupt_Oct_12"
+root = "/logs/distilled_rewards_corrupt"
 counter = itertools.count()
 
 base_hps = {
@@ -31,7 +31,7 @@ hps = [
     {
         **base_hps,
         "log_dir": f"{root}/run_{next(counter)}/",
-        "log_tags": ["distilled_rewards_corrupt_v3"],
+        "log_tags": ["distilled_rewards_corrupt"],
         
         "task": {
         "basic_graph": {

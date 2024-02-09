@@ -1,9 +1,7 @@
 import sys
 import itertools
 
-#root = "/mnt/ps/home/CORP/lazar.atanackovic/project/gflownet-runs/logs/gfn_mixed_sample_count_Dec_1"
-#root = "/mnt/ps/home/CORP/lazar.atanackovic/project/gflownet-runs/logs/gfn_mixed_sample_cliques_Jan_12"
-root = "/mnt/ps/home/CORP/lazar.atanackovic/project/gflownet-runs/logs/gfn_mixed_sample_neighbors_Jan_23"
+root = "logs/gfn_mixed_sample_neighbors"
 counter = itertools.count()
 
 base_hps = {
@@ -34,7 +32,7 @@ hps = [
     {
         **base_hps,
         "log_dir": f"{root}/run_{next(counter)}/",
-        "log_tags": ["gfn_mixed_sample_v3"],
+        "log_tags": ["gfn_mixed_sample"],
         "seed": seed,
         "opt": {"learning_rate": 1e-4}, # o.g. 1e-4,
         
@@ -53,7 +51,7 @@ hps = [
         
         "algo": {
             **base_algo_hps,
-            "dir_model_pretrain_for_sampling": "/mnt/ps/home/CORP/lazar.atanackovic/project/gflownet-runs/logs/gfn_SubTB_flows_Nov_21/run_0/model_state.pt",
+            "dir_model_pretrain_for_sampling": "/logs/gfn_SubTB_flows_pre_trained_constant_model/run_0/model_state.pt",
             "alpha": alpha,
             **algo,
         },

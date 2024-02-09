@@ -1,7 +1,7 @@
 import sys
 import itertools
 
-root = "/mnt/ps/home/CORP/lazar.atanackovic/project/gflownet-runs/logs/supervised_seq_rewards_shuffle_Jan_15"
+root = "/logs/supervised_seq_rewards_shuffle"
 counter = itertools.count()
 
 base_hps = {
@@ -35,7 +35,7 @@ hps = [
     {
         **base_hps,
         "log_dir": f"{root}/run_{next(counter)}/",
-        "log_tags": ["sup_seq_rewards_shuffle_v3"],
+        "log_tags": ["sup_seq_rewards_shuffle"],
         
         "task": {
         "toy_seq": {

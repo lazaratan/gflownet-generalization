@@ -1,7 +1,7 @@
 import sys
 import itertools
 
-root = "/mnt/ps/home/CORP/lazar.atanackovic/project/gflownet-runs/logs/gfn_SubTB_flows_Nov_21"
+root = "/logs/gfn_SubTB_flows"
 counter = itertools.count()
 
 base_hps = {
@@ -32,7 +32,7 @@ hps = [
     {
         **base_hps,
         "log_dir": f"{root}/run_{next(counter)}/",
-        "log_tags": ["gfn_flows_v3"],
+        "log_tags": ["gfn_flows"],
         "seed": seed,
         
         "task": {
