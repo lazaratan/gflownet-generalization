@@ -1,5 +1,5 @@
 
-[![Paper](http://img.shields.io/badge/paper-arxiv.2302.00482-B31B1B.svg)]()
+[![Paper](http://img.shields.io/badge/paper-arxiv.2302.00482-B31B1B.svg)](https://arxiv.org/abs/2402.05309)
 [![Build-and-Test](https://github.com/recursionpharma/gflownet/actions/workflows/build-and-test.yaml/badge.svg)](https://github.com/recursionpharma/gflownet/actions/workflows/build-and-test.yaml)
 [![Code Quality](https://github.com/recursionpharma/gflownet/actions/workflows/code-quality.yaml/badge.svg)](https://github.com/recursionpharma/gflownet/actions/workflows/code-quality.yaml)
 [![Python versions](https://img.shields.io/badge/Python-3.9%2B-blue)](https://www.python.org/downloads/)
@@ -11,7 +11,7 @@ This repo is modified and based off the implementation: [gflownet](https://githu
 
 ## GFlowNets and generalization
 
-It is hypothesize that GFlowNets leverage the generalization potential of deep neural networks to assign probability mass to unvisited areas of the state space. This repo contains a graph generation benchmark environment (considering several rewards of varying difficulty) such that $p(x)$ can be tractably computed over all graphs. This set of graph generation tasks are used to assess the ability of GFlowNets to *generalize* and approximate $p(x)$ for unvisited areas of the state space. See [this http link]() for the paper.
+It is hypothesize that GFlowNets leverage the generalization potential of deep neural networks to assign probability mass to unvisited areas of the state space. This repo contains a graph generation benchmark environment (considering several rewards of varying difficulty) such that $p(x)$ can be tractably computed over all graphs. This set of graph generation tasks are used to assess the ability of GFlowNets to *generalize* and approximate $p(x)$ for unvisited areas of the state space. See [this http link](https://arxiv.org/abs/2402.05309) for the paper.
 
 ## GFlowNets
 
@@ -29,6 +29,12 @@ L. Atanackovic, E. Bengio. Investigating Generalization Behaviours of Generative
 </summary>
 
 ```bibtex
+@article{atanackovic2024,
+  title={Investigating Generalization Behaviours of Generative Flow Networks},
+  author={Atanackovic, Lazar and Bengio, Emmanuel},
+  journal={arXiv preprint arXiv:2402.05309},
+  year={2024}
+}
 ```
 </details>
 
@@ -51,6 +57,19 @@ See [implementation notes](docs/implementation_notes.md) for more.
 
 ## Getting started
 
+First, generate a cache of all states/graphs up to 7 nodes. To do this run the following:
+
+```bash
+python basic_graph_task.py --recompute-all ./data/basic_graphs 7
+```
+
+To train a single model on the graph benchmark tasks, run:
+
+```bash
+python expts/task_single_run_gfn.py
+```
+
+To run an experiment, e.g. training the distilled flow models for $F$ and $P_F$ over 3 seeds, use [`task_distilled_flows.py`](expts/task_distilled_flows.py). 
 
 ## Installation
 
@@ -74,6 +93,3 @@ pip install git+https://github.com/recursionpharma/gflownet.git@v0.0.10 --find-l
 
 If package dependencies seem not to work, you may need to install the exact frozen versions listed `requirements/`, i.e. `pip install -r requirements/main_3.9.txt`.
 
-## Developing & Contributing
-
-TODO: Write Contributing.md.
