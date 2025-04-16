@@ -864,15 +864,16 @@ class ExactProbCompCallback:
         )
 
     def compute_metrics(self, log_probs, state_flows, log_rewards_estimate, valid_batch_ids=None):
-        log_probs = log_probs.cpu().numpy()[:-1]
+        log_probs = log_probs.cpu().numpy()[:-1].clip(-10_000, 0)
         state_flows = state_flows.cpu().numpy().flatten()
         log_rewards_estimate = log_rewards_estimate.cpu().numpy().flatten()
-        log_rewards = self.log_rewards
+        log_rewards = np.asarray(self.log_rewards)
         lp, p = log_probs, np.exp(log_probs)
         lq, q = self.true_log_probs, np.exp(self.true_log_probs)
         self.trial.model_log_probs, self.trial.true_log_probs = log_probs, self.true_log_probs
         mae_log_probs = np.mean(abs(lp - lq))
-        js_log_probs = (p * (lp - lq) + q * (lq - lp)).sum() / 2
+        js_log_probs = (p * (np.log(p/2 + q/2 + 1e-38) - lp) + q * (np.log(p/2 + q/2 + 1e-38)  - lq)).sum() / 2
+        jeff_log_probs = (p * (lp - lq) + q * (lq - lp)).sum() / 2
         mae_log_rewards = np.mean(abs(log_rewards_estimate - log_rewards)) 
         print("L1 logpx error", mae_log_probs, "JS divergence", js_log_probs)
 
